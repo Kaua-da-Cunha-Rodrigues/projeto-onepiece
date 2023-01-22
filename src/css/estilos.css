@@ -1,0 +1,128 @@
+body{
+    font-family: 'Poppins';
+}
+.cabecalho{
+    display: flex; /*essa propriedade tem que vir no "pai" e não nos "filhos" para pode deixar os elementos na mesma linha (nesse caso são os elementos do cabeçalho*/
+    justify-content: space-between; /*Joga o nav pra direita*/
+    padding: 30px;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.cabecalho .logo{
+    width: 65px;
+}
+
+.cabecalho .menu{
+    display: flex; /*Os elementos do nav estão na mesma linha agora*/
+    align-items: center;
+    height: 100%; /*Ocupa 100% da altura do cabeçalho (ou nav, agora não sei*/
+}
+.cabecalho nav li a{
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: 0.2s;
+}
+.cabecalho nav li a:hover{
+    background-color: #d5011d;    
+}
+.container{
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 132px); /*Faz um cálculo tirando o valor da altura do menu do valor de 100% da view height, assim evitando ter um scroll na página*/
+    padding: 0 30px 30px;
+}
+.container .imagem-titulo{
+    max-width: 500px;
+}
+.container .descricao{
+    color: #a8adb7;
+    width: 85%;
+    font-size: 18px;
+    margin: 30px 0;
+}
+.container .botao-trailer{
+    background-color: #ff0021;
+    color: #ffffff;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor:pointer; /*ao passar por cima do botão o mouse vira mãozinha*/
+    border: none;
+    text-transform: uppercase; /*maiúsculo*/
+    transition: 0.5s all ease-in-out;
+}
+.container .botao-trailer:hover{
+    transform: scale(1.1); /*aumenta a escala de tamanho quando passa em cima*/
+}
+
+.fundo-video{
+    position: absolute;
+    z-index: -1; /*posiciona no eixo z em -1 (numa camada atrás basicamente*/
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /*Evita o scroll da tela*/
+    display: flex;
+    justify-content: center;
+}
+.fundo-video .video{
+    height: 100vh;   
+}
+.fundo-video::after{
+    /*Adicionar uma camada de fundo por cima do vídeo */
+    content: "";
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8) 50%, rgba(0,0,0,1) 100%);
+}
+.modal{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(52,52,50,0.749);
+    visibility: hidden; /*Esconde o modal todo*/
+}
+.conteudo-modal{
+    /*centralizar o vídeo do modal*/
+    display: flex;
+    justify-content: center; /*Centralizar horizontalmente*/
+    align-items: center; /*centralizar verticalmente*/
+    flex-direction: column; /*Faz uma coluna, fazendo o 'X' do vídeo ficar acima dele*/
+    height: 100vh;
+    border-radius: 5px;
+    gap: 150px; /*Desgruda os elementos (o 'X' do vídeo)*/
+}
+.fechar-modal{
+    /*Fazendo o botão de 'X'*/
+    background-color: #ffffff;
+    color: #f03a17;
+    font-weight: bold;
+    font-size: 20px;
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.modal iframe{
+    border-width: 0;
+    width: 640px;
+    height: 360px;
+}
+
+.modal.aberto{
+    /*Vai servir pro js depois para exibir o vídeo*/
+    opacity: 1;
+    visibility: visible;
+}
+
+
